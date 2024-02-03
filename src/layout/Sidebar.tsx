@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   Drawer as MuiDrawer,
   List,
@@ -23,11 +22,14 @@ import { styled, Theme, CSSObject } from "@mui/material/styles";
 
 // const drawerWidth = 240;
 
-type SidebarProps={
-    drawerWidth: number
-}
+type SidebarProps = {
+  drawerWidth: number;
+  open: boolean;
+  handleDrawerClose: () => void;
+  handleDrawerOpen: () => void;
+};
 
-const SideBar = ({ drawerWidth }: SidebarProps) => {
+const SideBar = ({ drawerWidth, open, handleDrawerClose }: SidebarProps) => {
   const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -84,11 +86,11 @@ const SideBar = ({ drawerWidth }: SidebarProps) => {
   }));
   const navigate = useNavigate();
 
-  const [open, setOpen] = useState(false);
+  // const [open, setOpen] = useState(false);
 
-  const handleDrawerClose = () => {
-    setOpen(!open);
-  };
+  // const handleDrawerClose = () => {
+  //   setOpen(!open);
+  // };
   const menuItems = [
     { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
     { name: "Products", path: "/products", icon: <InventoryIcon /> },

@@ -124,9 +124,9 @@ export default function AppLayout({ children }: AppLayoutProps) {
     setOpen(true);
   };
 
-  // const handleDrawerClose = () => {
-  //   setOpen(!open);
-  // };
+  const handleDrawerClose = () => {
+    setOpen(!open);
+  };
   // const menuItems = [
   //   { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
   //   { name: "Products", path: "/products", icon: <InventoryIcon /> },
@@ -240,7 +240,12 @@ export default function AppLayout({ children }: AppLayoutProps) {
           {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </Button>
       </Drawer> */}
-      <SideBar drawerWidth={drawerWidth} />
+      <SideBar
+        open={open}
+        drawerWidth={drawerWidth}
+        handleDrawerClose={handleDrawerClose}
+        handleDrawerOpen={handleDrawerOpen}
+      />
       <Box component="main" sx={{ flexGrow: 1, p: 3, mt: "3rem" }}>
         {children}
       </Box>
