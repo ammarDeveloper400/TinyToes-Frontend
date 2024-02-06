@@ -6,6 +6,7 @@ import {
   ListItemButton,
   Button,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -27,6 +28,8 @@ type SidebarProps = {
 };
 
 const SideBar = ({ drawerWidth, open, handleDrawerClose }: SidebarProps) => {
+  const isMobile = false;
+
   const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -92,7 +95,7 @@ const SideBar = ({ drawerWidth, open, handleDrawerClose }: SidebarProps) => {
   ];
 
   return (
-    <Drawer variant="permanent" open={open}>
+    <Drawer variant={isMobile ? "temporary" : "permanent"} open={open}>
       <DrawerHeader
         sx={{
           display: "flex",

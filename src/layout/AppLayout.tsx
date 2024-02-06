@@ -48,7 +48,9 @@ interface AppLayoutProps {
 
 export default function AppLayout({ children }: AppLayoutProps) {
   const [open, setOpen] = React.useState(true);
+  /* eslint-disable */
   const [auth, setAuth] = React.useState(true);
+  /* eslint-enable */
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   // const navigate = useNavigate();
 
