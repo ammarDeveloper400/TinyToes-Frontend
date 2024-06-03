@@ -1,8 +1,7 @@
-import React from 'react'
-
+import { Box } from '@mui/material'
 const Signup = () => {
   return (
-    <div>Signup</div>
+    <Box>Signup</Box>
   )
 }
 
