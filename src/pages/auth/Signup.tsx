@@ -1,9 +1,12 @@
-import  { FormEvent } from 'react';
-import { Box, Button,  CssBaseline,  Paper, TextField, Typography, Grid2, Avatar } from '@mui/material';
+import { Box, Button,  CssBaseline,  Paper,  Typography, Grid2, Avatar } from '@mui/material';
 import { Link } from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { styled } from '@mui/material/styles';
 import AuthPageCopyright from '../../components/footer/AuthPageCopyright';
+import FormInput from '../../components/inputs/FormInput';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { SignupSchema,UserSignup } from '../../utils/schemas/authScehma';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -21,14 +24,21 @@ const Item = styled(Paper)(({ theme }) => ({
 
 // Login Component
 export default function Signup () {
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Login button clicked');
+  
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  
+  } = useForm<UserSignup>({resolver: zodResolver(SignupSchema),});
+  const onSubmit: SubmitHandler<UserSignup> = (data) => {
+    console.log(data);
   };
 
   return (
     <Box sx={{  height: '100vh' , display:'flex', justifyContent:'center', alignItems:'center', }}>
       <CssBaseline />
+      <form onSubmit={handleSubmit(onSubmit) }>
       <Grid2 container spacing={2} columns={24}>
         <Grid2>
           <Item elevation={6} square sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 4 }}>
@@ -40,51 +50,52 @@ export default function Signup () {
             </Typography>
             <Grid2 container spacing={2} size={24}>
               <Grid2  size={6}>
-              <TextField
-                variant="outlined"
+              <FormInput
+              label='First Name'
+              name='firstName'
+              control={control}
+              fieldError={errors.firstName}
+               variant="outlined"
                 margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="First Name"
-                name="username"
                 autoFocus
               />
               </Grid2>
               <Grid2  size={6}>
-              <TextField
+              <FormInput
                 variant="outlined"
                 margin="normal"
-                required
                 fullWidth
-                id="username"
                 label="Last Name"
-                name="username"
-                autoFocus
+                name="lastName"
+                
+                control={control}
+                fieldError={errors.lastName}
               />
               </Grid2>
             </Grid2>
-            <Box component="form" noValidate sx={{ width: '100%', mt: 1 }} onSubmit={handleLogin}>
-              <TextField
+            <Box   sx={{ width: '100%', mt: 1 }} >
+              <FormInput
                 variant="outlined"
                 margin="normal"
-                required
+                
                 fullWidth
                 id="username"
                 label="Email"
                 name="email"
                 autoFocus
+                control={control}
+                fieldError={errors.email}
               />
-              <TextField
+              <FormInput
                 variant="outlined"
                 margin="normal"
-                required
                 fullWidth
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="current-password"
+                control={control}
+                fieldError={errors.password}
               />
               
               
@@ -107,6 +118,8 @@ export default function Signup () {
           </Item>
         </Grid2>
       </Grid2>
+      </form>
+     
     </Box>
   );
 };

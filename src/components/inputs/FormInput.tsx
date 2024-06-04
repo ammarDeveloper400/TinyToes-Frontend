@@ -1,32 +1,32 @@
-// components/FormInput.tsx
 import React from 'react';
-import { Controller, Control, FieldError } from 'react-hook-form';
+import { Controller, Control, FieldError, FieldValues, Path } from 'react-hook-form';
 import { TextField, TextFieldProps } from '@mui/material';
 
-interface FormInputProps extends TextFieldProps {
-  name: string;
-  control: Control<any>;
+interface FormInputProps<T extends FieldValues> extends Omit<TextFieldProps, 'name' | 'error'> {
+  name: Path<T>;
+  control: Control<T>;
   label: string;
-  error?: FieldError;
+  fieldError?: FieldError;
+
 }
-
-const FormInput: React.FC<FormInputProps> = ({ name, control, label, error, ...rest }) => {
-  return (
-    <Controller
-      name={name}
-      control={control}
-      render={({ field }) => (
-        <TextField
-          {...field}
-          label={label}
-          fullWidth
-          error={!!error}
-          helperText={error ? error.message : ''}
-          {...rest}
-        />
-      )}
-    />
-  );
-};
-
-export default FormInput;
+const FormInput = <T extends FieldValues>({ name, control, label, fieldError, ...rest }: FormInputProps<T>) => {
+  
+    return (
+      <Controller
+        name={name}
+        control={control}
+        render={({ field }) => (
+          <TextField
+            {...field}
+            label={label}
+            fullWidth
+            error={!!fieldError}
+            helperText={fieldError ? fieldError.message : ''}
+            {...rest}
+          />
+        )}
+      />
+    );
+  };
+  
+  export default FormInput;

@@ -1,9 +1,12 @@
-import React, { FormEvent } from 'react';
-import { Box, Button, Checkbox, CssBaseline, FormControlLabel, Paper, TextField, Typography, Grid2, Avatar } from '@mui/material';
+import { Box, Button, Checkbox, CssBaseline, FormControlLabel, Paper, Typography, Grid2, Avatar } from '@mui/material';
 import { Link } from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { styled } from '@mui/material/styles';
 import AuthPageCopyright from '../../components/footer/AuthPageCopyright';
+import { SubmitHandler, useForm } from 'react-hook-form';
+import { LoginSchema, UserLogin } from '../../utils/schemas/authScehma';
+import { zodResolver } from '@hookform/resolvers/zod';
+import FormInput from '../../components/inputs/FormInput';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -20,12 +23,12 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 // Login Component
-const Login: React.FC = () => {
-  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    console.log('Login button clicked');
+export default function Login () {
+  const {control, handleSubmit, setValue ,    formState: { errors },
+}=useForm<UserLogin>({resolver: zodResolver(LoginSchema),});
+  const onSubmit: SubmitHandler<UserLogin> = (data) => {
+    console.log(data);
   };
-
   return (
     <Box sx={{  height: '100vh' , display:'flex', justifyContent:'center', alignItems:'center', }}>
       <CssBaseline />
@@ -38,18 +41,20 @@ const Login: React.FC = () => {
             <Typography component="h1" variant="h5">
               Sign in
             </Typography>
-            <Box component="form" noValidate sx={{ width: '100%', mt: 1 }} onSubmit={handleLogin}>
-              <TextField
+            <Box component="form" onSubmit={handleSubmit(onSubmit)} noValidate sx={{ width: '100%', mt: 1 }} >
+              <FormInput
                 variant="outlined"
                 margin="normal"
                 required
                 fullWidth
-                id="username"
-                label="Username"
-                name="username"
+                label="Email"
+                name="email"
                 autoFocus
+                control={control}
+                fieldError={errors.email}
+
               />
-              <TextField
+              <FormInput
                 variant="outlined"
                 margin="normal"
                 required
@@ -59,11 +64,20 @@ const Login: React.FC = () => {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                control={control}
+                fieldError={errors.password}
+
+
               />
               <Box sx={{ display: 'flex', justifyContent: 'space-between'}}>
               <FormControlLabel
-                control={<Checkbox value="remember" color="primary" />}
+                control={<Checkbox color="primary" />}
                 label="Remember me"
+                onChange={(e) => {
+                  const target = e.target as HTMLInputElement;
+                  const isChecked = target.checked? true : false;
+                  setValue('remember', isChecked);
+                }}
               />
               </Box>
               
@@ -90,4 +104,3 @@ const Login: React.FC = () => {
   );
 };
 
-export default Login;
