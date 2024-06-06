@@ -1,59 +1,70 @@
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import Button from "@mui/material/Button";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
+import { useState } from "react";
+import {
+  Drawer as MuiDrawer,
+  List,
+  ListItemText,
+  Divider,
+  ListItemButton,
+} from "@mui/material";
+import { Box, IconButton, useMediaQuery, useTheme } from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
 
-export default function AppSideBar() {
-  const [open, setOpen] = React.useState(false);
+const Drawer = () => {
+  const [open, setOpen] = useState(false);
+  const theme = useTheme();
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // Check for small screens (sm or smaller)
 
-  const toggleDrawer = (newOpen: boolean) => () => {
-    setOpen(newOpen);
+  const toggleDrawer = () => {
+    setOpen(!open);
   };
 
-  const DrawerList = (
-    <Box sx={{ width: 250 }} role="presentation" onClick={toggleDrawer(false)}>
-      <List>
-        {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-      <List>
-        {["All mail", "Trash", "Spam"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   return (
-    <div>
-      <Button onClick={toggleDrawer(true)}>Open drawer</Button>
-      <Drawer open={open} onClose={toggleDrawer(false)}>
-        {DrawerList}
-      </Drawer>
-    </div>
+    <>
+      {/* Only show the menu icon on small screens */}
+      {isSmallScreen && (
+        <IconButton
+          color="inherit"
+          edge="start"
+          onClick={toggleDrawer}
+          sx={{ marginLeft: 2, marginTop: 2 }}
+        >
+          <MenuIcon />
+        </IconButton>
+      )}
+
+      <MuiDrawer
+        open={open}
+        onClose={toggleDrawer}
+        variant={isSmallScreen ? "temporary" : "permanent"} // Switch between permanent and temporary variant
+        sx={{
+          width: 250,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: 250,
+            boxSizing: "border-box",
+          },
+        }}
+      >
+        <Box sx={{ width: 250 }}>
+          <List>
+            <ListItemButton>
+              <ListItemText primary="Home" />
+            </ListItemButton>
+            <ListItemButton>
+              <ListItemText primary="About" />
+            </ListItemButton>
+            <ListItemButton>
+              <ListItemText primary="Services" />
+            </ListItemButton>
+            <Divider />
+            <ListItemButton>
+              <ListItemText primary="Contact" />
+            </ListItemButton>
+          </List>
+        </Box>
+      </MuiDrawer>
+    </>
   );
-}
+};
+
+export default Drawer;
