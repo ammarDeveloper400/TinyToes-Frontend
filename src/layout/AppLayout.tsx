@@ -283,7 +283,8 @@ export default function MiniDrawer() {
           morbi tristique senectus et. Adipiscing elit duis tristique
           sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
           eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
+          posuere sollicitudin aliquam ultrices sagittis orci a. Good to see the
+          content
         </Typography>
       </Box>
     </Box>
