@@ -273,7 +273,6 @@ export default function MiniDrawer() {
         <Typography sx={{ marginBottom: 2 }}>
          
           ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
           sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
           mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
           risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
