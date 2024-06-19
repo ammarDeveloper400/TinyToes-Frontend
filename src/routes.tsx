@@ -52,4 +52,5 @@ export const appRoutes: Routes[] = [
       </AppLayout>
     ),
   },
+  
 ];
