@@ -4,6 +4,7 @@ import Signup from "./pages/auth/Signup";
 import Categories from "./pages/categories/Categories";
 import { Dashboard } from "./pages/dashboard/Dashboard";
 import Products from "./pages/products/Products";
+import Reviews from "./pages/reviews/Reviews";
 
 interface Routes {
   name: string;
@@ -52,5 +53,14 @@ export const appRoutes: Routes[] = [
       </AppLayout>
     ),
   },
-  
+
+  {
+    name: "Reviews",
+    path: "/reviews",
+    element: (
+      <AppLayout>
+        <Reviews />
+      </AppLayout>
+    ),
+  },
 ];
