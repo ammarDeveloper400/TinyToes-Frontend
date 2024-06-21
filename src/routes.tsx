@@ -3,6 +3,7 @@ import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import Categories from "./pages/categories/Categories";
 import { Dashboard } from "./pages/dashboard/Dashboard";
+import { Orders } from "./pages/orders/Orders";
 import Products from "./pages/products/Products";
 import Reviews from "./pages/reviews/Reviews";
 
@@ -43,5 +44,10 @@ export const appRoutes: Routes[] = [
     name: "reviews",
     element: withLayout(<Reviews />),
     path: "/reviews",
+  },
+  {
+    name: "orders",
+    element: withLayout(<Orders />),
+    path: "/orders",
   },
 ];
