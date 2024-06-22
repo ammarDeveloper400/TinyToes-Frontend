@@ -119,7 +119,12 @@ export default function AppLayout({ children }: AppLayoutProps) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const menuItems = [
+    { name: "Products", path: "/products" },
+    { name: "Categories", path: "/categories" },
+    { name: "Orders", path: "/orders" },
+    { name: "Reviews", path: "/reviews" },
+  ];
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -164,12 +169,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         </DrawerHeader>
         <Divider />
         <List>
-          {[
-            { name: "Products", path: "/products" },
-            { name: "Categories", path: "/categories" },
-            { name: "Orders", path: "/orders" },
-            { name: "Reviews", path: "/reviews" },
-          ].map((item, idx) => (
+          {menuItems.map((item, idx) => (
             <ListItem key={idx} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 onClick={() => {
