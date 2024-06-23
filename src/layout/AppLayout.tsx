@@ -158,18 +158,22 @@ export default function AppLayout({ children }: AppLayoutProps) {
           sx={{
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
+            justifyContent: "center",
+            cursor:'pointer'
+          }}
+          onClick={()=>{
+            navigate('/dashboard')
           }}
         >
-          <Typography>Tiny Toes</Typography>
+          <Typography sx={{ textAlign: "center" }}>Tiny Toes</Typography>
 
-          <IconButton onClick={handleDrawerClose}>
+          {/* <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
               <ChevronRightIcon />
             ) : (
               <ChevronLeftIcon />
             )}
-          </IconButton>
+          </IconButton> */}
         </DrawerHeader>
         <Divider />
         <List>
