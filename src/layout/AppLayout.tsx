@@ -1,5 +1,5 @@
 import * as React from "react";
-import { styled, useTheme, Theme, CSSObject } from "@mui/material/styles";
+import { styled, Theme, CSSObject } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
 import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
@@ -111,7 +111,7 @@ interface AppLayoutProps {
 }
 
 export default function AppLayout({ children }: AppLayoutProps) {
-  const theme = useTheme();
+  // const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
 
@@ -120,7 +120,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
   };
 
   const handleDrawerClose = () => {
-    setOpen(false);
+    setOpen(!open);
   };
   const menuItems = [
     { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
@@ -159,21 +159,13 @@ export default function AppLayout({ children }: AppLayoutProps) {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            cursor:'pointer'
+            cursor: "pointer",
           }}
-          onClick={()=>{
-            navigate('/dashboard')
+          onClick={() => {
+            navigate("/dashboard");
           }}
         >
           <Typography sx={{ textAlign: "center" }}>Tiny Toes</Typography>
-
-          {/* <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton> */}
         </DrawerHeader>
         <Divider />
         <List>
@@ -282,6 +274,9 @@ export default function AppLayout({ children }: AppLayoutProps) {
             </ListItem>
           ))}
         </List> */}
+        <IconButton onClick={handleDrawerClose}>
+          {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+        </IconButton>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, mt: "3rem" }}>
         {/* <DrawerHeader /> */}
