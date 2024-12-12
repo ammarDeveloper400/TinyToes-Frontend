@@ -3,6 +3,7 @@ import { Box, Button, Checkbox, CssBaseline, FormControlLabel, Paper, TextField,
 import { Link } from 'react-router-dom';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import { styled } from '@mui/material/styles';
+import AuthPageCopyright from '../../components/footer/AuthPageCopyright';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: '#fff',
@@ -16,18 +17,7 @@ const Item = styled(Paper)(({ theme }) => ({
   }),
 }));
 
-// Copyright Component
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {'Copyright © '}
-      <Link to="/" style={{ color: 'inherit' }}>
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-    </Typography>
-  );
-}
+
 
 // Login Component
 const Login: React.FC = () => {
@@ -90,7 +80,7 @@ const Login: React.FC = () => {
                   <Link to="/signup">{'Don\'t have an account? Sign Up'}</Link>
               </Box>
               <Box sx={{ mt: 5 }}>
-                <Copyright />
+                <AuthPageCopyright /> 
               </Box>
             </Box>
           </Item>

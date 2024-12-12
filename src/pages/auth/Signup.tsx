@@ -1,119 +1,113 @@
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  TextField,
-  FormControlLabel,
-  Checkbox,
-  Link,
-  Box,
-  Typography,
-  Grid2
-} from "@mui/material";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import  { FormEvent } from 'react';
+import { Box, Button,  CssBaseline,  Paper, TextField, Typography, Grid2, Avatar } from '@mui/material';
+import { Link } from 'react-router-dom';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { styled } from '@mui/material/styles';
+import AuthPageCopyright from '../../components/footer/AuthPageCopyright';
 
-function Copyright() {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center">
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+const Item = styled(Paper)(({ theme }) => ({
+  backgroundColor: '#fff',
+  ...theme.typography.body2,
+  padding: theme.spacing(1),
+  borderRadius: '2rem',
+  textAlign: 'center',
+  color: theme.palette.text.secondary,
+  ...theme.applyStyles('dark', {
+    backgroundColor: '#1A2027',
+  }),
+}));
 
-export default function SignUp() {
+
+
+// Login Component
+export default function Signup () {
+  const handleLogin = (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    console.log('Login button clicked');
+  };
+
   return (
-    <Box
-      sx={{
-        height: "100vh",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        flexDirection: "column",  
-      }}
-    >
+    <Box sx={{  height: '100vh' , display:'flex', justifyContent:'center', alignItems:'center', }}>
       <CssBaseline />
-      <Box sx={{ mt: 8, display: "flex", flexDirection: "column", alignItems: "center" , justifyContent:"center"}}>
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
-        <Typography component="h1" variant="h5">
-          Sign up
-        </Typography>
-        <Box component="form" noValidate sx={{ width: "100%", mt: 3 }}>
-          <Grid2 container spacing={2}>
-            <Grid2 size={{ xs: 12, sm: 6 }}>
+      <Grid2 container spacing={2} columns={24}>
+        <Grid2>
+          <Item elevation={6} square sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 4 }}>
+            <Avatar sx={{ margin: 1, backgroundColor: 'secondary.main' }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Signup
+            </Typography>
+            <Grid2 container spacing={2} size={24}>
+              <Grid2  size={6}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
                 variant="outlined"
+                margin="normal"
                 required
                 fullWidth
-                id="firstName"
+                id="username"
                 label="First Name"
+                name="username"
                 autoFocus
               />
-            </Grid2>
-            <Grid2  size={{ xs: 12, sm: 6 }}>
+              </Grid2>
+              <Grid2  size={6}>
               <TextField
                 variant="outlined"
+                margin="normal"
                 required
                 fullWidth
-                id="lastName"
+                id="username"
                 label="Last Name"
-                name="lastName"
-                autoComplete="lname"
+                name="username"
+                autoFocus
               />
+              </Grid2>
             </Grid2>
-            <Grid2 size={{ xs: 12, sm: 12, md: 12, lg: 12 }}>
+            <Box component="form" noValidate sx={{ width: '100%', mt: 1 }} onSubmit={handleLogin}>
               <TextField
                 variant="outlined"
+                margin="normal"
                 required
                 fullWidth
-                id="email"
-                label="Email Address"
+                id="username"
+                label="Email"
                 name="email"
-                autoComplete="email"
+                autoFocus
               />
-            </Grid2>
-            <Grid2 size={{ xs: 12, sm: 12, md: 12, lg: 12 }}>
               <TextField
                 variant="outlined"
+                margin="normal"
                 required
                 fullWidth
                 name="password"
                 label="Password"
                 type="password"
                 id="password"
-                autoComplete="new-password"
+                autoComplete="current-password"
               />
-            </Grid2>
-            <Grid2 size={{ xs: 12, sm: 6 }}>
-              <FormControlLabel
-                control={<Checkbox value="allowExtraEmails" color="primary" />}
-                label="I want to receive inspiration, marketing promotions, and updates via email."
-              />
-            </Grid2>
-          </Grid2>
-          <Button type="submit" fullWidth variant="contained" sx={{ mt: 3, mb: 2 }}>
-            Sign Up
-          </Button>
-          <Grid2 container justifyContent="flex-end">
-            <Box>
-              <Link href="#" variant="body2">
-                Already have an account? Sign in
-              </Link>
+              
+              
+              <Button
+                type="submit"
+                fullWidth
+                variant="contained"
+                color="primary"
+                sx={{ mt: 3, mb: 2 }}
+              >
+                Signup
+              </Button>
+              <Box>
+                  <Link to="/login">{'Have an account? Signin'}</Link>
+              </Box>
+              <Box sx={{ mt: 5 }}>
+                <AuthPageCopyright /> 
+              </Box>
             </Box>
-          </Grid2>
-        </Box>
-      </Box>
-      <Box mt={5}>
-        <Copyright />
-      </Box>
+          </Item>
+        </Grid2>
+      </Grid2>
     </Box>
   );
-}
+};
+
