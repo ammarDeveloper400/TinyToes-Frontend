@@ -37,10 +37,10 @@ const Drawer = () => {
         onClose={toggleDrawer}
         variant={isSmallScreen ? "temporary" : "permanent"} // Switch between permanent and temporary variant
         sx={{
-          width: 250,
+          flexGrow: 1,
           flexShrink: 0,
           "& .MuiDrawer-paper": {
-            width: 250,
+            flexGrow: 1,
             boxSizing: "border-box",
           },
         }}
