@@ -162,7 +162,7 @@ const Header = () => {
   );
   return (
     <Box>
-      <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.appBar }}>
+      <AppBar position="fixed" sx={{marginLeft:'100rem', zIndex: (theme) => theme.zIndex.appBar }}>
         <Toolbar>
           <IconButton
             size="large"
