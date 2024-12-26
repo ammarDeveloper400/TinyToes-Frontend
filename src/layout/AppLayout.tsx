@@ -265,12 +265,11 @@ export default function MiniDrawer() {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         {/* <DrawerHeader /> */}
         <Typography sx={{ marginBottom: 2 }}>
-          Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
+          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo.
+          Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
+          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
+          consectetur lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec
+          massa sapien faucibus et molestie ac. Check the content of app.
         </Typography>
         <Typography sx={{ marginBottom: 2 }}>
           Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
