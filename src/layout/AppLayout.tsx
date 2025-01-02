@@ -262,7 +262,7 @@ export default function MiniDrawer() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, mt: "3rem" }}>
         {/* <DrawerHeader /> */}
         <Typography sx={{ marginBottom: 2 }}>
           Metus vulputate eu scelerisque felis imperdiet proin fermentum leo.
