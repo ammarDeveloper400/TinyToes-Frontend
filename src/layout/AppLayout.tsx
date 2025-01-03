@@ -271,8 +271,6 @@ export default function MiniDrawer() {
           massa sapien faucibus et molestie ac. Check the content of app.
         </Typography>
         <Typography sx={{ marginBottom: 2 }}>
-         
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
           sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
           mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
           risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
