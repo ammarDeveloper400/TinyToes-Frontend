@@ -275,17 +275,6 @@ export default function AppLayout({ children }: React.ReactElement) {
       <Box component="main" sx={{ flexGrow: 1, p: 3, mt: "3rem" }}>
         {/* <DrawerHeader /> */}
         {children}
-        <Typography sx={{ marginBottom: 2 }}>
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          posuere sollicitudin aliquam ultrices sagittis orci a. Good to see the
-          content. Level up the content.
-        </Typography>
       </Box>
     </Box>
   );
