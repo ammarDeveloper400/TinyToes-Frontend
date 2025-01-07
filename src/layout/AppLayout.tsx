@@ -104,7 +104,7 @@ const Drawer = styled(MuiDrawer, {
   ],
 }));
 
-export default function MiniDrawer() {
+export default function AppLayout({ children }: React.ReactElement) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
@@ -274,12 +274,7 @@ export default function MiniDrawer() {
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, mt: "3rem" }}>
         {/* <DrawerHeader /> */}
-        <Typography sx={{ marginBottom: 2 }}>
-          Metus vulputate eu scelerisque felis imperdiet proin fermentum leo.
-          Mauris commodo quis imperdiet massa tincidunt. Cras tincidunt lobortis
-          feugiat vivamus at augue. At augue eget arcu dictum varius duis at
-          massa sapien faucibus et molestie ac. Check the content of app.
-        </Typography>
+        {children}
         <Typography sx={{ marginBottom: 2 }}>
           sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
           mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis

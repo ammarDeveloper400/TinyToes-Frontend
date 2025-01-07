@@ -2,6 +2,7 @@ import AppLayout from "./layout/AppLayout";
 import Login from "./pages/auth/Login";
 import Signup from "./pages/auth/Signup";
 import { Dashboard } from "./pages/dashboard/Dashboard";
+import Products from "./pages/products/Products";
 
 interface Routes {
   name: string;
@@ -31,5 +32,14 @@ export const appRoutes: Routes[] = [
       </AppLayout>
     ),
     path: "/dashboard",
+  },
+  {
+    path: "/products",
+    name: "Products",
+    element: (
+      <AppLayout>
+        <Products />
+      </AppLayout>
+    ),
   },
 ];
