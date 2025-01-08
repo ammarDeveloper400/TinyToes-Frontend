@@ -15,7 +15,7 @@ export const authRoutes: Routes[] = [
 
 export const appRoutes: Routes[] = [
   {
-    name: "dashboard",
+    name: "Dashboard",
     element: (
       <AppLayout>
         <Dashboard />
@@ -24,7 +24,7 @@ export const appRoutes: Routes[] = [
     path: "/",
   },
   {
-    name: "dashboard",
+    name: "Dashboard",
     element: (
       <AppLayout>
         <Dashboard />
