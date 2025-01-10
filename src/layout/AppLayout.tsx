@@ -103,8 +103,11 @@ const Drawer = styled(MuiDrawer, {
     },
   ],
 }));
+interface AppLayoutProps {
+  children: React.ReactNode;
+}
 
-export default function AppLayout({ children }: React.ReactElement) {
+export default function AppLayout({ children }: AppLayoutProps) {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();

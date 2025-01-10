@@ -15,52 +15,33 @@ export const authRoutes: Routes[] = [
   { name: "login", element: <Login />, path: "/login" },
   { name: "signup", element: <Signup />, path: "/signup" },
 ];
-
+const withLayout = (component: JSX.Element) => (
+  <AppLayout>{component}</AppLayout>
+);
 export const appRoutes: Routes[] = [
   {
-    name: "Dashboard",
-    element: (
-      <AppLayout>
-        <Dashboard />
-      </AppLayout>
-    ),
+    name: "dashboard",
+    element: withLayout(<Dashboard />),
     path: "/",
   },
   {
-    name: "Dashboard",
-    element: (
-      <AppLayout>
-        <Dashboard />
-      </AppLayout>
-    ),
+    name: "dashboard-alt",
+    element: withLayout(<Dashboard />),
     path: "/dashboard",
   },
   {
+    name: "products",
+    element: withLayout(<Products />),
     path: "/products",
-    name: "Products",
-    element: (
-      <AppLayout>
-        <Products />
-      </AppLayout>
-    ),
   },
   {
-    name: "Category",
+    name: "categories",
+    element: withLayout(<Categories />),
     path: "/categories",
-    element: (
-      <AppLayout>
-        <Categories />
-      </AppLayout>
-    ),
   },
-
   {
-    name: "Reviews",
+    name: "reviews",
+    element: withLayout(<Reviews />),
     path: "/reviews",
-    element: (
-      <AppLayout>
-        <Reviews />
-      </AppLayout>
-    ),
   },
 ];
