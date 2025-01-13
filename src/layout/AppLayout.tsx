@@ -16,12 +16,11 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import CategoryIcon from "@mui/icons-material/Category";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import MailIcon from "@mui/icons-material/Mail";
+import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useNavigate } from "react-router";
 
 const drawerWidth = 240;
@@ -113,7 +112,7 @@ interface AppLayoutProps {
 
 export default function AppLayout({ children }: AppLayoutProps) {
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = React.useState(true);
   const navigate = useNavigate();
 
   const handleDrawerOpen = () => {
@@ -124,6 +123,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
     setOpen(false);
   };
   const menuItems = [
+    { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
     { name: "Products", path: "/products", icon: <InventoryIcon /> },
     { name: "Categories", path: "/categories", icon: <CategoryIcon /> },
     { name: "Orders", path: "/orders", icon: <ShoppingCartIcon /> },
