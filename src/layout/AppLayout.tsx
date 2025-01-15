@@ -275,8 +275,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
             </ListItem>
           ))}
         </List> */}
-        {/* <List>
-          <ListItemButton sx={{ textAlign: "center" }}> */}
+
         <Button
           sx={{
             display: "flex",
