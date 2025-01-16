@@ -287,10 +287,8 @@ export default function AppLayout({ children }: AppLayoutProps) {
         >
           {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </Button>
-        
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, mt: "3rem" }}>
-        {/* <DrawerHeader /> */}
         {children}
       </Box>
     </Box>
