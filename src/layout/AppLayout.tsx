@@ -22,6 +22,7 @@ import CategoryIcon from "@mui/icons-material/Category";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useNavigate } from "react-router";
+import { Button } from "@mui/material";
 
 const drawerWidth = 240;
 
@@ -274,9 +275,20 @@ export default function AppLayout({ children }: AppLayoutProps) {
             </ListItem>
           ))}
         </List> */}
-        <IconButton onClick={handleDrawerClose}>
+        {/* <List>
+          <ListItemButton sx={{ textAlign: "center" }}> */}
+        <Button
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          onClick={handleDrawerClose}
+        >
           {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
-        </IconButton>
+        </Button>
+        {/* </ListItemButton> */}
+        {/* </List> */}
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3, mt: "3rem" }}>
         {/* <DrawerHeader /> */}
