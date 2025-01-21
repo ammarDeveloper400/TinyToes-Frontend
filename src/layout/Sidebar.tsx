@@ -5,66 +5,178 @@ import {
   ListItemText,
   Divider,
   ListItemButton,
+  Button,
+  Typography,
 } from "@mui/material";
-import { Box, IconButton, useMediaQuery, useTheme } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+// import { IconButton, useMediaQuery, useTheme } from "@mui/material";
+import InventoryIcon from "@mui/icons-material/Inventory";
+import RateReviewIcon from "@mui/icons-material/RateReview";
+import CategoryIcon from "@mui/icons-material/Category";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import { useNavigate } from "react-router";
+import { styled, Theme, CSSObject } from "@mui/material/styles";
 
-const Drawer = () => {
+const drawerWidth = 240;
+
+const openedMixin = (theme: Theme): CSSObject => ({
+  width: drawerWidth,
+  transition: theme.transitions.create("width", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.enteringScreen,
+  }),
+  overflowX: "hidden",
+});
+
+const closedMixin = (theme: Theme): CSSObject => ({
+  transition: theme.transitions.create("width", {
+    easing: theme.transitions.easing.sharp,
+    duration: theme.transitions.duration.leavingScreen,
+  }),
+  overflowX: "hidden",
+  width: `calc(${theme.spacing(7)} + 1px)`,
+  [theme.breakpoints.up("sm")]: {
+    width: `calc(${theme.spacing(8)} + 1px)`,
+  },
+});
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "flex-end",
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+}));
+
+const Drawer = styled(MuiDrawer, {
+  shouldForwardProp: (prop) => prop !== "open",
+})(({ theme }) => ({
+  width: drawerWidth,
+  flexShrink: 0,
+  whiteSpace: "nowrap",
+  boxSizing: "border-box",
+  variants: [
+    {
+      props: ({ open }) => open,
+      style: {
+        ...openedMixin(theme),
+        "& .MuiDrawer-paper": openedMixin(theme),
+      },
+    },
+    {
+      props: ({ open }) => !open,
+      style: {
+        ...closedMixin(theme),
+        "& .MuiDrawer-paper": closedMixin(theme),
+      },
+    },
+  ],
+}));
+const SideBar = () => {
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
-  const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm")); // Check for small screens (sm or smaller)
 
-  const toggleDrawer = () => {
+  const handleDrawerClose = () => {
     setOpen(!open);
   };
+  const menuItems = [
+    { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
+    { name: "Products", path: "/products", icon: <InventoryIcon /> },
+    { name: "Categories", path: "/categories", icon: <CategoryIcon /> },
+    { name: "Orders", path: "/orders", icon: <ShoppingCartIcon /> },
+    { name: "Reviews", path: "/reviews", icon: <RateReviewIcon /> },
+  ];
 
   return (
-    <>
-      {/* Only show the menu icon on small screens */}
-      {isSmallScreen && (
-        <IconButton
-          color="inherit"
-          edge="start"
-          onClick={toggleDrawer}
-          sx={{ marginLeft: 2, marginTop: 2 }}
-        >
-          <MenuIcon />
-        </IconButton>
-      )}
-
-      <MuiDrawer
-        open={open}
-        onClose={toggleDrawer}
-        variant={isSmallScreen ? "temporary" : "permanent"} // Switch between permanent and temporary variant
+    <Drawer variant="permanent" open={open}>
+      <DrawerHeader
         sx={{
-          flexGrow: 1,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            flexGrow: 1,
-            boxSizing: "border-box",
-          },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+        }}
+        onClick={() => {
+          navigate("/dashboard");
         }}
       >
-        <Box sx={{ width: 250 }}>
-          <List>
-            <ListItemButton>
-              <ListItemText primary="Home" />
+        <Typography sx={{ textAlign: "center" }}>Tiny Toes</Typography>
+      </DrawerHeader>
+      <Divider />
+      <List>
+        {menuItems.map((item, idx) => (
+          <ListItem key={idx} disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              onClick={() => {
+                navigate(item.path);
+              }}
+              sx={[
+                {
+                  minHeight: 48,
+                  px: 2.5,
+                },
+                open
+                  ? {
+                      justifyContent: "initial",
+                    }
+                  : {
+                      justifyContent: "center",
+                    },
+              ]}
+            >
+              <ListItemIcon
+                sx={[
+                  {
+                    minWidth: 0,
+                    justifyContent: "center",
+                  },
+                  open
+                    ? {
+                        mr: 3,
+                      }
+                    : {
+                        mr: "auto",
+                      },
+                ]}
+              >
+                {item.icon}
+              </ListItemIcon>
+              <ListItemText
+                primary={item.name}
+                sx={[
+                  open
+                    ? {
+                        opacity: 1,
+                      }
+                    : {
+                        opacity: 0,
+                      },
+                ]}
+              />
             </ListItemButton>
-            <ListItemButton>
-              <ListItemText primary="About" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemText primary="Services" />
-            </ListItemButton>
-            <Divider />
-            <ListItemButton>
-              <ListItemText primary="Contact" />
-            </ListItemButton>
-          </List>
-        </Box>
-      </MuiDrawer>
-    </>
+          </ListItem>
+        ))}
+      </List>
+      <Divider />
+
+      <Button
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+        onClick={handleDrawerClose}
+      >
+        {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+      </Button>
+    </Drawer>
   );
 };
 
-export default Drawer;
+export default SideBar;

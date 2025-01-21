@@ -23,6 +23,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useNavigate } from "react-router";
 import { Button } from "@mui/material";
+import SideBar from "./Sidebar";
 
 const drawerWidth = 240;
 
@@ -123,17 +124,17 @@ export default function AppLayout({ children }: AppLayoutProps) {
   const handleDrawerClose = () => {
     setOpen(!open);
   };
-  const menuItems = [
-    { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
-    { name: "Products", path: "/products", icon: <InventoryIcon /> },
-    { name: "Categories", path: "/categories", icon: <CategoryIcon /> },
-    { name: "Orders", path: "/orders", icon: <ShoppingCartIcon /> },
-    { name: "Reviews", path: "/reviews", icon: <RateReviewIcon /> },
-  ];
+  // const menuItems = [
+  //   { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
+  //   { name: "Products", path: "/products", icon: <InventoryIcon /> },
+  //   { name: "Categories", path: "/categories", icon: <CategoryIcon /> },
+  //   { name: "Orders", path: "/orders", icon: <ShoppingCartIcon /> },
+  //   { name: "Reviews", path: "/reviews", icon: <RateReviewIcon /> },
+  // ];
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
-      <AppBar position="fixed" open={open} title="sdkjf">
+      <AppBar position="fixed" open={open} title="test">
         <Toolbar>
           <IconButton
             color="inherit"
@@ -154,7 +155,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer variant="permanent" open={open}>
+      {/* <Drawer variant="permanent" open={open}>
         <DrawerHeader
           sx={{
             display: "flex",
@@ -235,7 +236,8 @@ export default function AppLayout({ children }: AppLayoutProps) {
         >
           {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </Button>
-      </Drawer>
+      </Drawer> */}
+      <SideBar />
       <Box component="main" sx={{ flexGrow: 1, p: 3, mt: "3rem" }}>
         {children}
       </Box>
