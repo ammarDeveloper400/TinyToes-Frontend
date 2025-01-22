@@ -150,7 +150,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            Mini variant drawer
+            Ecommerce Store Admin Panel
           </Typography>
         </Toolbar>
       </AppBar>
