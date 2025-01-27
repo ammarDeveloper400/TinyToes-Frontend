@@ -11,7 +11,6 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
-// import { IconButton, useMediaQuery, useTheme } from "@mui/material";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import RateReviewIcon from "@mui/icons-material/RateReview";
 import CategoryIcon from "@mui/icons-material/Category";
@@ -19,8 +18,6 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import { useNavigate } from "react-router";
 import { styled, Theme, CSSObject } from "@mui/material/styles";
-
-// const drawerWidth = 240;
 
 type SidebarProps = {
   drawerWidth: number;
@@ -86,11 +83,6 @@ const SideBar = ({ drawerWidth, open, handleDrawerClose }: SidebarProps) => {
   }));
   const navigate = useNavigate();
 
-  // const [open, setOpen] = useState(false);
-
-  // const handleDrawerClose = () => {
-  //   setOpen(!open);
-  // };
   const menuItems = [
     { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
     { name: "Products", path: "/products", icon: <InventoryIcon /> },
