@@ -240,7 +240,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
           {open ? <ChevronLeftIcon /> : <ChevronRightIcon />}
         </Button>
       </Drawer> */}
-      <SideBar />
+      <SideBar drawerWidth={drawerWidth} />
       <Box component="main" sx={{ flexGrow: 1, p: 3, mt: "3rem" }}>
         {children}
       </Box>
