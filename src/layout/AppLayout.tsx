@@ -87,36 +87,11 @@ const AppBar = styled(MuiAppBar, {
   ],
 }));
 
-// const Drawer = styled(MuiDrawer, {
-//   shouldForwardProp: (prop) => prop !== "open",
-// })(({ theme }) => ({
-//   width: drawerWidth,
-//   flexShrink: 0,
-//   whiteSpace: "nowrap",
-//   boxSizing: "border-box",
-//   variants: [
-//     {
-//       props: ({ open }) => open,
-//       style: {
-//         ...openedMixin(theme),
-//         "& .MuiDrawer-paper": openedMixin(theme),
-//       },
-//     },
-//     {
-//       props: ({ open }) => !open,
-//       style: {
-//         ...closedMixin(theme),
-//         "& .MuiDrawer-paper": closedMixin(theme),
-//       },
-//     },
-//   ],
-// }));
 interface AppLayoutProps {
   children: React.ReactNode;
 }
 
 export default function AppLayout({ children }: AppLayoutProps) {
-  // const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   // const navigate = useNavigate();
 
@@ -127,13 +102,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
   const handleDrawerClose = () => {
     setOpen(!open);
   };
-  // const menuItems = [
-  //   { name: "Dashboard", path: "/dashboard", icon: <DashboardIcon /> },
-  //   { name: "Products", path: "/products", icon: <InventoryIcon /> },
-  //   { name: "Categories", path: "/categories", icon: <CategoryIcon /> },
-  //   { name: "Orders", path: "/orders", icon: <ShoppingCartIcon /> },
-  //   { name: "Reviews", path: "/reviews", icon: <RateReviewIcon /> },
-  // ];
+
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
