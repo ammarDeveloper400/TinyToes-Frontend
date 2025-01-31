@@ -93,6 +93,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
               display: "flex",
               justifyContent: "space-between",
               alignItems: "center",
+              width: "100%",
             }}
           >
             <Typography variant="h6" noWrap component="div">
