@@ -49,6 +49,9 @@ interface AppLayoutProps {
 export default function AppLayout({ children }: AppLayoutProps) {
   const [open, setOpen] = React.useState(true);
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [isClosing, setIsClosing] = React.useState(false);
+
+
 
   /* eslint-disable */
   const [auth, setAuth] = React.useState(true);

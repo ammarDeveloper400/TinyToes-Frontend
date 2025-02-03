@@ -97,14 +97,14 @@ const SideBar = ({
   ];
   const container =
     window !== undefined ? () => window().document.body : undefined;
-    const handleDrawerTransitionEnd = () => {
-      setIsClosing(false);
-    };
-    const handleDrawerToggle = () => {
-      if (!isClosing) {
-        setMobileOpen(!mobileOpen);
-      }
-    };
+  const handleDrawerTransitionEnd = () => {
+    setIsClosing(false);
+  };
+  const handleDrawerToggle = () => {
+    if (!isClosing) {
+      setMobileOpen(!mobileOpen);
+    }
+  };
   return (
     <Drawer
       container={container}
@@ -112,6 +112,10 @@ const SideBar = ({
       open={open}
       ModalProps={{
         keepMounted: true, // Better open performance on mobile.
+      }}
+      sx={{
+        display: { xs: "block", sm: "none" },
+        "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
       }}
     >
       <DrawerHeader
