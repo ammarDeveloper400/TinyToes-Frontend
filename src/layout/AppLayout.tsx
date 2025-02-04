@@ -48,6 +48,8 @@ interface AppLayoutProps {
 
 export default function AppLayout({ children }: AppLayoutProps) {
   const [open, setOpen] = React.useState(true);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
   /* eslint-disable */
   const [auth, setAuth] = React.useState(true);
   /* eslint-enable */
@@ -142,6 +144,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
         drawerWidth={drawerWidth}
         handleDrawerClose={handleDrawerClose}
         handleDrawerOpen={handleDrawerOpen}
+        mobileOpen={mobileOpen}
       />
       <Box component="main" sx={{ flexGrow: 1, p: 3, mt: "3rem" }}>
         {children}
