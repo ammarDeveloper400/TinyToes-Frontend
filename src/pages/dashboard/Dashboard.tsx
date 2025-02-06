@@ -92,8 +92,25 @@ export const Dashboard = () => {
           </Card>
         </Grid>
         <Grid item sm={12} md={6} lg={2} xl={2}>
-          <Card>
-            <Typography>Total Products</Typography>
+          <Card
+            sx={{
+              height: "100%",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <Box
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+            >
+              <Typography sx={{ fontWeight: "bold" }}>
+                Total Pending Orders
+              </Typography>
+              <Typography sx={{ fontWeight: "bold" }}>0</Typography>
+            </Box>
           </Card>
         </Grid>
         <Grid item sm={12} md={6} lg={2} xl={2}>
