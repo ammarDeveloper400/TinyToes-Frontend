@@ -117,12 +117,12 @@ export default function AppLayout({ children }: AppLayoutProps) {
                   id="menu-appbar"
                   anchorEl={anchorEl}
                   anchorOrigin={{
-                    vertical: "top",
+                    vertical: "bottom",
                     horizontal: "right",
                   }}
                   keepMounted
                   transformOrigin={{
-                    vertical: "top",
+                    vertical: "bottom",
                     horizontal: "right",
                   }}
                   open={Boolean(anchorEl)}
@@ -130,6 +130,7 @@ export default function AppLayout({ children }: AppLayoutProps) {
                 >
                   <MenuItem onClick={handleClose}>Profile</MenuItem>
                   <MenuItem onClick={handleClose}>My account</MenuItem>
+                  <MenuItem onClick={handleClose}>Logout</MenuItem>
                 </Menu>
               </div>
             )}
