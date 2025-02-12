@@ -6,6 +6,7 @@ import {
   ListItemButton,
   Button,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -22,17 +23,13 @@ import { styled, Theme, CSSObject } from "@mui/material/styles";
 type SidebarProps = {
   drawerWidth: number;
   open: boolean;
-  mobileOpen: boolean;
   handleDrawerClose: () => void;
   handleDrawerOpen: () => void;
 };
 
-const SideBar = ({
-  drawerWidth,
-  open,
-  handleDrawerClose,
-  mobileOpen,
-}: SidebarProps) => {
+const SideBar = ({ drawerWidth, open, handleDrawerClose }: SidebarProps) => {
+  const isMobile = false;
+
   const openedMixin = (theme: Theme): CSSObject => ({
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -59,6 +56,7 @@ const SideBar = ({
     alignItems: "center",
     justifyContent: "flex-end",
     padding: theme.spacing(0, 1),
+    // necessary for content to be below app bar
     ...theme.mixins.toolbar,
   }));
 
@@ -95,29 +93,9 @@ const SideBar = ({
     { name: "Orders", path: "/orders", icon: <ShoppingCartIcon /> },
     { name: "Reviews", path: "/reviews", icon: <RateReviewIcon /> },
   ];
-  const container =
-    window !== undefined ? () => window.document.body : undefined;
-  // const handleDrawerTransitionEnd = () => {
-  //   setIsClosing(false);
-  // };
-  // const handleDrawerToggle = () => {
-  //   if (!isClosing) {
-  //     setMobileOpen(!mobileOpen);
-  //   }
-  // };
+
   return (
-    <Drawer
-      // container={container}
-      variant={"temporary"}
-      open={open}
-      ModalProps={{
-        keepMounted: true, // Better open performance on mobile.
-      }}
-      sx={{
-        display: { xs: "block", sm: "none" },
-        "& .MuiDrawer-paper": { boxSizing: "border-box", width: drawerWidth },
-      }}
-    >
+    <Drawer variant={isMobile ? "temporary" : "permanent"} open={open}>
       <DrawerHeader
         sx={{
           display: "flex",
