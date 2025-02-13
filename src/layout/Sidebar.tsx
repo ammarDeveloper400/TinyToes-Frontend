@@ -96,18 +96,18 @@ const SideBar = ({
     { name: "Reviews", path: "/reviews", icon: <RateReviewIcon /> },
   ];
   const container =
-    window !== undefined ? () => window().document.body : undefined;
-  const handleDrawerTransitionEnd = () => {
-    setIsClosing(false);
-  };
-  const handleDrawerToggle = () => {
-    if (!isClosing) {
-      setMobileOpen(!mobileOpen);
-    }
-  };
+    window !== undefined ? () => window.document.body : undefined;
+  // const handleDrawerTransitionEnd = () => {
+  //   setIsClosing(false);
+  // };
+  // const handleDrawerToggle = () => {
+  //   if (!isClosing) {
+  //     setMobileOpen(!mobileOpen);
+  //   }
+  // };
   return (
     <Drawer
-      container={container}
+      // container={container}
       variant={"temporary"}
       open={open}
       ModalProps={{
